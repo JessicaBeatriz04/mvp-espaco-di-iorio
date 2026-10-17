@@ -101,6 +101,15 @@
             const cliente = document.getElementById("cliente").value;
             const telefone = document.getElementById("telefone").value;
             const data = document.getElementById("data").value;
+            const hoje = new Date();
+hoje.setHours(0, 0, 0, 0);
+
+const dataReserva = new Date(data + "T00:00:00");
+
+if (dataReserva < hoje) {
+    alert("Não é possível cadastrar uma reserva em uma data passada.");
+    return;
+}
             const tipo = document.getElementById("tipo").value;
 
             const conflito = reservas.some(reserva => reserva.data === data);
