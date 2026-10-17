@@ -25,6 +25,16 @@ Facilitar o cadastro de clientes, o registro de reservas e a consulta de disponi
 
 ## Público-alvo
 
+## Como executar o projeto
+
+1. Acesse o arquivo index.html no repositório.
+2. Baixe o arquivo para o computador.
+3. Abra o arquivo em um navegador, como Google Chrome.
+4. Preencha os dados do cliente e registre uma reserva para testar as funcionalidades.
+
+Observação: os dados cadastrados não ficam salvos após fechar ou atualizar a página.
+
+
 Os responsáveis pela administração do Espaço Di Iorio.
 
 ## Observação
