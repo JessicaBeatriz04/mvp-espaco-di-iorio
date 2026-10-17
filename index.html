@@ -107,7 +107,7 @@ hoje.setHours(0, 0, 0, 0);
 const dataReserva = new Date(data + "T00:00:00");
 
 if (dataReserva < hoje) {
-    alert("Não é possível cadastrar uma reserva em uma data passada.");
+    alert("Data inválida! Selecione hoje ou uma data futura para realizar a reserva.");
     return;
 }
             const tipo = document.getElementById("tipo").value;
