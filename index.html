@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espaço Di Iorio - Reservas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            color: #222;
+            margin: 0;
+            padding: 20px;
+        }
+        header {
+            background: #171717;
+            color: #d4af37;
+            text-align: center;
+            padding: 25px;
+            border-radius: 10px;
+        }
+        main {
+            max-width: 700px;
+            margin: 25px auto;
+        }
+        section {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+        label {
+            display: block;
+            margin-top: 12px;
+        }
+        input, select, button {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+        }
+        button {
+            background: #171717;
+            color: #d4af37;
+            border: none;
+            cursor: pointer;
+            margin-top: 18px;
+        }
+        li {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Espaço Di Iorio</h1>
+        <p>Sistema de Cadastro e Controle de Reservas</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Cadastrar reserva</h2>
+            <form id="formReserva">
+                <label for="cliente">Nome do cliente</label>
+                <input id="cliente" required>
+
+                <label for="telefone">Telefone</label>
+                <input id="telefone" type="tel" required>
+
+                <label for="data">Data da reserva</label>
+                <input id="data" type="date" required>
+
+                <label for="tipo">Tipo de locação</label>
+                <select id="tipo" required>
+                    <option value="">Selecione</option>
+                    <option>Day Use</option>
+                    <option>Pernoite</option>
+                </select>
+
+                <button type="submit">Cadastrar reserva</button>
+            </form>
+        </section>
+
+        <section>
+            <h2>Reservas cadastradas</h2>
+            <ul id="listaReservas">
+                <li>Nenhuma reserva cadastrada.</li>
+            </ul>
+        </section>
+    </main>
+
+    <script>
+        const formulario = document.getElementById("formReserva");
+        const lista = document.getElementById("listaReservas");
+        const reservas = [];
+
+        formulario.addEventListener("submit", function(evento) {
+            evento.preventDefault();
+
+            const cliente = document.getElementById("cliente").value;
+            const telefone = document.getElementById("telefone").value;
+            const data = document.getElementById("data").value;
+            const tipo = document.getElementById("tipo").value;
+
+            const conflito = reservas.some(reserva => reserva.data === data);
+
+            if (conflito) {
+                alert("Já existe uma reserva cadastrada para essa data.");
+                return;
+            }
+
+            reservas.push({ cliente, telefone, data, tipo });
+            lista.innerHTML = "";
+
+            reservas.forEach(reserva => {
+                const item = document.createElement("li");
+                item.textContent =
+                    reserva.cliente + " - " + reserva.data +
+                    " - " + reserva.tipo;
+                lista.appendChild(item);
+            });
+
+            formulario.reset();
+            alert("Reserva cadastrada com sucesso!");
+        });
+    </script>
+</body>
+</html>
