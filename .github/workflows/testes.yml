@@ -3,10 +3,7 @@ name: Testes Automatizados
 
 on:
   push:
-    branches: [principal]
   pull_request:
-    branches: [principal]
-
 jobs:
   testes:
     runs-on: ubuntu-latest
